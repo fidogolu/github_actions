@@ -1,10 +1,14 @@
-name: Multiple shells commands
-on: [push]
-
+name: Multiple shells commands 2
+on:
+  push:
     branches:
-      - "main"
+      - main
   pull_request:
-    types: [closed, assigned, opened, reopened]
+    types:
+      - closed
+      - assigned
+      - opened
+      - reopened
 jobs:
   run-shell-command:
     runs-on: ubuntu-latest
@@ -16,7 +20,8 @@ jobs:
         shell: python
   run-windows-command:
     runs-on: windows-latest
-    needs: ["run-shell-command"]
+    needs:
+      - run-shell-command
     steps:
       - name: current directory with powershell
         run: Get-Location
